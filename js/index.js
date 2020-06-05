@@ -1,38 +1,43 @@
-const display = document.querySelector('.display');
-const btnEq = document.querySelector('.btn-eq');
+const display = document.querySelector(".display");
+const btnEq = document.querySelector(".btn-eq");
 
-document.querySelectorAll('.digits button')
-    .forEach( button => button.addEventListener('click', digitPressed) )
+document
+  .querySelectorAll(".digits button")
+  .forEach((button) => button.addEventListener("click", digitPressed));
 
-function digitPressed (ev) {
-    display.value += ev.target.innerText;   
+function digitPressed(ev) {
+  display.value += ev.target.innerText;
 }
 
-document.querySelectorAll('.opers button')
-    .forEach( button => button.addEventListener('click', operPressed) )
+document
+  .querySelectorAll(".opers button")
+  .forEach((button) => button.addEventListener("click", operPressed));
 
-function operPressed (ev) {
-    display.value += ev.target.innerText;   
+function operPressed(ev) {
+  display.value += ev.target.innerText;
 }
-btnEq.addEventListener('click', () => display.value = eval(display.value));
+btnEq.addEventListener("click", () => (display.value = eval(display.value)));
 
-document.querySelectorAll('.clear button')
-    .forEach( button => button.addEventListener('click', clearPressed) )
+document
+  .querySelectorAll(".clear button")
+  .forEach((button) => button.addEventListener("click", clearPressed));
 
-function clearPressed () {
-    display.value = " ";    
-}
-
-document.querySelectorAll('.backspace button')
-    .forEach( button => button.addEventListener('click', backspacePressed) )
-
-function backspacePressed () {
-    var exp = display.value
-    display.value = exp.substring(0, exp.length-1);    
+function clearPressed() {
+  display.value = " ";
 }
 
-document.querySelectorAll('.error')
-    .forEach( button => button.addEventListener('click', error) )
+document
+  .querySelectorAll(".backspace button")
+  .forEach((button) => button.addEventListener("click", backspacePressed));
+
+function backspacePressed() {
+  var exp = display.value;
+  display.value = exp.substring(0, exp.length - 1);
+}
+
+document
+  .querySelectorAll(".error")
+  .forEach((button) => button.addEventListener("click", error));
 
 function error() {
   var eval1 = eval(display.value);
@@ -40,6 +45,14 @@ function error() {
   else display.value = eval1;
 }
 
-setInterval( ()=> {
-    document.querySelector('.clock').innerText = (new Date()).toLocaleTimeString();
+document
+  .querySelectorAll(".percentage button")
+  .forEach((button) => button.addEventListener("click", percentagePressed));
+
+function percentagePressed(num, per) {
+  display.value = (num / 100) * per;
+}
+
+setInterval(() => {
+  document.querySelector(".clock").innerText = new Date().toLocaleTimeString();
 }, 1000);
